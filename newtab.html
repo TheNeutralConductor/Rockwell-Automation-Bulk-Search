@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Application to bulk search the Rockwell Automation website, revealing photos, documents and CAD diagrams for products."
+    />
+    <meta name="author" content="Brian Cowell" />
+    <title>ROCKWELL SPIDER SEARCH</title>
+    <link rel="stylesheet" href="bulma.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" media="print" href="print.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,200,0,0&amp;icon_names=print"
+    />
+  </head>
+  <body class="has-navbar-fixed-top">
+    <nav
+      class="navbar is-light is-fixed-top"
+      role="navigation"
+      aria-label="main navigation"
+    >
+      <div class="navbar-menu">
+        <div class="container">
+          <div class="is-light">
+            <div class="columns">
+              <div class="column is-3">
+                <figure class="image">
+                  <img src="SPIDER_SEARCH_Rockwell.svg" />
+                </figure>
+              </div>
+              <div class="column is-narrow">
+                <div class="control conbox">
+                  <label class="radio">
+                    <input
+                      type="radio"
+                      id=""
+                      name="contentType"
+                      value="EVERYTHING"
+                      checked
+                    />
+                    Everything
+                  </label>
+                  <label class="radio" style="margin-inline-start: 0px">
+                    <input type="radio" name="contentType" value="PHOTOS" />
+                    Photos
+                  </label>
+                  <label class="radio" style="margin-inline-start: 0px">
+                    <input type="radio" name="contentType" value="DOCUMENTS" />
+                    Documents
+                  </label>
+                  <label class="radio" style="margin-inline-start: 0px">
+                    <input type="radio" name="contentType" value="ACCESSORY" />
+                    Accessories
+                  </label>
+                  <label class="radio" style="margin-inline-start: 0px">
+                    <input
+                      type="radio"
+                      name="contentType"
+                      value="SPECIFICATIONS"
+                    />
+                    Specifications
+                  </label>
+                </div>
+              </div>
+              <div class="column is-narrow">
+                <div class="panel-block">
+                  <div class="control conbox2">
+                    <div class="checkbox">
+                      <input type="checkbox" name="myclip" id="myclip" />
+                      <label for="largepix">Show Clipboard</label>
+                    </div>
+                    <div class="checkbox">
+                      <input
+                        type="checkbox"
+                        name="verbosemode"
+                        id="verbosemode"
+                      />
+                      <label for="largepix">Experimental Mode</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="panel-block">
+                  <div class="buttonsNav is-flex">
+                    <button id="btn-print" class="button is-small is-rounded is-hidden">
+                      <img
+                        src="print_24dp_5F6368_FILL0_wght300_GRAD0_opsz24.svg"
+                        alt="Icon"
+                        width="24"
+                        height="24"
+                      />PRINT
+                    </button>
+                    <button
+                      id="json-download"
+                      class="button is-small is-rounded is-hidden"
+                    >
+                      <img
+                        src="file_json_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+                        alt="Icon"
+                        width="24"
+                        height="24"
+                      />DOWNLOAD
+                    </button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="section">
+      <nav class="panel au-search">
+        <div class="panel-block">
+          <textarea
+            class="textarea is-family-monospace"
+            id="productItems"
+            placeholder="e.g. 440GTZS21UTRH"
+            style="height: 320px"
+          ></textarea>
+        </div>
+
+        <div class="panel-block">
+          <div class="buttons">
+            <button class="button is-link is-fullwidth" id="search">
+              Rockwell Website Search
+            </button>
+            <button
+              class="button is-responsive is-inverted is-link is-outlined is-fullwidth"
+              id="reset"
+            >
+              Clear All
+            </button>
+          </div>
+        </div>
+      </nav>
+      <div class="columns">
+        <div class="column is-one-fifth rockbarsearch"></div>
+        <div class="column is-flex-direction-column">
+          <div class="card" id="resultCards">
+            <div class="card-content">
+              <div class="content" id="results">
+                <div class="verbose-mode is-hidden"></div>
+                <div class="productView is-hidden">
+                  <div class="columns prodView is-multiline is-mobile"></div>
+                </div>
+                <div class="normalView"></div>
+                <div class="copyCSV is-hidden"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>

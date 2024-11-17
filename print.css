@@ -1,0 +1,53 @@
+@media print {
+  body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 0;
+    print-color-adjust: exact;
+  }
+
+  .column.is-one-fifth.rockbarsearch,
+  nav.au-search,
+  .navbar {
+    display: none;
+  }
+
+  .section {
+    padding: 0px;
+  }
+
+  .has-navbar-fixed-top {
+    padding: 0px !important;
+  }
+
+  @page {
+    margin: 0cm;
+  }
+
+  .box {
+    break-after: avoid;
+    break-inside: avoid-page;
+    background-color: transparent;
+    border: 0px;
+    box-shadow: none;
+    padding: 0px;
+  }
+
+  .card {
+    box-shadow: none !important;
+  }
+
+  .card-shadow {
+    border: 1px solid black;
+    box-shadow: none;
+  }
+
+  table.info2 {
+    margin-bottom: 0px !important;
+  }
+
+  .copyCSV {
+    display: none;
+  }
+}

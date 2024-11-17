@@ -1,0 +1,286 @@
+.card[data-id] {
+  background-color: whitesmoke;
+}
+
+.card[data-id]:hover {
+  background-color: white;
+}
+
+#reset,
+#resultCards {
+  /* visibility: hidden; */
+}
+
+/* #search {
+  background-color: steelblue;
+  color: white;
+} */
+
+.cadTextColor {
+  color: mediumvioletred;
+}
+
+.brand {
+  color: tomato;
+}
+
+.specifications {
+  width: 77%;
+  margin: 20px;
+  background-color: white;
+}
+
+.specHeading {
+  font-size: 1rem;
+  padding: 4px;
+  border-bottom: 1px solid teal;
+}
+
+.specProperty {
+  color: darkgoldenrod;
+  font-size: 0.8rem;
+  display: flex;
+}
+
+.specLabel {
+  width: 50%;
+  text-align: end;
+  color: black;
+  font-size: 0.8rem;
+  margin-left: 30px;
+}
+
+.specValue {
+  width: 50%;
+  padding-left: 20px;
+}
+
+figcaption {
+  font-size: 0.6em;
+  text-align: center;
+  color: brown;
+}
+
+.docpdf {
+  color: teal;
+}
+
+.dsheet {
+  color: blue;
+}
+
+.back-gold {
+  background-color: paleturquoise;
+}
+
+.lgo {
+  color: deeppink;
+}
+
+.is-200x200 {
+  height: 200px !important;
+  width: 200px !important;
+}
+
+[data-tooltip] {
+  position: relative;
+  cursor: default;
+}
+
+[data-tooltip]::after {
+  position: absolute;
+  width: 100%;
+  content: attr(data-tooltip);
+  bottom: 40%;
+  box-sizing: border-box;
+  text-align: center;
+  color: white;
+  background-color: #2000ff85;
+  font-size: 0.6em;
+  visibility: hidden;
+  opacity: 0;
+}
+
+[data-tooltip]:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.panel.au-search {
+  width: 250px;
+  position: fixed;
+}
+
+.assetTable {
+  background-color: antiquewhite;
+  display: flex;
+}
+
+.scrollNAV {
+  background-color: antiquewhite;
+  border-bottom: 2px dashed darkcyan;
+}
+
+.assetTable table.is-striped tr:hover {
+  background-color: lemonchiffon !important;
+}
+
+.conbox {
+  color: crimson;
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.rockwell {
+  background-color: lemonchiffon;
+  color: gray;
+}
+
+.otherPix {
+  display: flex;
+}
+
+.rockglobe {
+  color: crimson;
+}
+
+.has-navbar-fixed-top {
+  background-color: ghostwhite;
+}
+
+.box {
+  background-color: whitesmoke;
+}
+
+.box[data-id]:hover {
+  background-color: beige;
+}
+
+.fa-globe {
+  color: brown;
+}
+
+tr th {
+  width: 27%;
+}
+
+.rockwellRepPhoto,
+.rockwellImage {
+  height: 100% !important;
+  object-fit: contain;
+}
+
+.card-shadow {
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.48);
+  border: solid 1px teal;
+}
+
+.card-transparent {
+  background-color: transparent;
+}
+
+.table4heading,
+.table5heading,
+.table6heading,
+.table7heading,
+.table8heading {
+  color: aliceblue;
+  background-color: darkseagreen;
+}
+
+.tableAccessoryHeading {
+  color: aliceblue;
+  background-color: violet;
+}
+
+.checkbox label {
+  color: dimgray;
+}
+
+.box[data-prod-id] {
+  background-color: whitesmoke;
+  color: lightcyan;
+}
+
+.table.accessory {
+  background-color: mediumspringgreen;
+}
+
+.table.documents1 {
+  background-color: aliceblue;
+}
+
+.table.documents2 {
+  background-color: honeydew;
+}
+
+.table.mytable {
+  background-color: papayawhip;
+}
+
+.navbar-menu {
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.48);
+}
+
+#productItems {
+  background-color: whitesmoke;
+}
+
+/* #productItems {
+	background-color: black;
+	color: springgreen;
+	text-shadow: 4px 4px 2px rgba(0,231,44,0.6);
+} */
+
+a svg {
+  height: 30px;
+  width: 30px;
+}
+
+a svg path {
+  fill: crimson;
+}
+
+#rockwellLifeCycle .tag.is-danger {
+  color: snow;
+  background-color: red;
+  font-weight: bold;
+}
+
+.gotoRockwell span {
+  margin-right: 5px;
+  color: crimson;
+}
+
+.copyCSV {
+  position: relative;
+  font-size: 10px;
+  margin-top: 30px;
+  background: honeydew;
+  cursor: pointer;
+}
+
+.copyCSV:hover {
+  border: 2px dashed black;
+  background-color: aquamarine;
+}
+
+.copyCSV:hover::after {
+  content: "Click to copy text to clipboard";
+  position: absolute;
+  font-size: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: yellow;
+  padding: 10px;
+  border-radius: 25px;
+}
+
+.control.conbox2 {
+  display: grid;
+}
+
+.buttonsNav.is-flex {
+  gap: 10px;
+}

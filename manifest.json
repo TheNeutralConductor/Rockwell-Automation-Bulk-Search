@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "Rockwell Spider Search",
+  "version": "0.2",
+  "author": "Brian Cowell",
+  "description": "Bulk search products from the Rockwell Automation website",
+  "icons": {
+    "1": "Icon_RA_R.svg"
+  },
+  "permissions": ["activeTab", "storage", "http://*/*", "https://*/*"],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  }
+}
