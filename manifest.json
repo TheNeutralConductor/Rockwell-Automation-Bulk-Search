@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Rockwell Spider Search",
-  "version": "0.2",
+  "version": "0.5",
   "author": "Brian Cowell",
   "description": "Bulk search products from the Rockwell Automation website",
   "icons": {

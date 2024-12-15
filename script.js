@@ -18,6 +18,24 @@ console.log(
 
 document.getElementById("reset").style.visibility = "hidden";
 
+
+// Checkbox for SIMPLE Mode
+const simpleModeCheckBox = document.getElementById("simplemode");
+simpleModeCheckBox.addEventListener("change", function () {
+  if (this.checked) {
+    if (document.querySelector(".productView.is-hidden")) {
+      document.querySelector(".productView").classList.toggle("is-hidden");
+      document.querySelector(".normalView").classList.toggle("is-hidden");
+    }
+  } else {
+    if (document.querySelector(".productView:not(.is-hidden)")) {
+      document.querySelector(".productView").classList.toggle("is-hidden");
+      document.querySelector(".normalView").classList.toggle("is-hidden");
+    }
+  }
+});
+
+
 // Checkbox for VERBOSE Mode
 const verbosemodeCheckBox = document.getElementById("verbosemode");
 verbosemodeCheckBox.addEventListener("change", function () {
@@ -227,6 +245,71 @@ searchBtn.addEventListener("click", () => {
   document.getElementById("json-download").classList.toggle("is-hidden");
 
   for (let index = 0; index < productListURL.length; index++) {
+
+    // PRODVIEW (SIMPLE VIEW)
+    document.querySelector("#results .productView .prodView").innerHTML += `
+    <div class="column is-one-quarter">
+      <div class="card" data-id-prodview="${productListURL[index]}">
+        <div class="card-content">
+          <div class="content">
+            <div class="media">
+              <div class="media-content is-flex is-justify-content-center">
+                <a class="title is-5" href="https://www.rockwellautomation.com/search/ra-en-US;keyword=${productListURL[index]};startIndex=0;activeTab=Products;spellingCorrect=true;facets=;languages=en;locales=en_GLOBAL,en-US;sort=bma;isPLS=false;sessionID=d9f1cfcd-b14c-" target="_blank" title="${productListURL[index]}">${productListURL[index]}</a>                        
+              </div>
+            </div>
+            <div class="card-image is-flex is-justify-content-center" data-product-photo="${productListURL[index]}">
+              <span class="icon is-large">
+                <span class="fa-lg">
+                  <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_OSmW{transform-origin:center;animation:spinner_T6mA .75s step-end infinite}@keyframes spinner_T6mA{8.3%{transform:rotate(30deg)}16.6%{transform:rotate(60deg)}25%{transform:rotate(90deg)}33.3%{transform:rotate(120deg)}41.6%{transform:rotate(150deg)}50%{transform:rotate(180deg)}58.3%{transform:rotate(210deg)}66.6%{transform:rotate(240deg)}75%{transform:rotate(270deg)}83.3%{transform:rotate(300deg)}91.6%{transform:rotate(330deg)}100%{transform:rotate(360deg)}}</style><g class="spinner_OSmW"><rect x="11" y="1" width="2" height="5" opacity=".14"/><rect x="11" y="1" width="2" height="5" transform="rotate(30 12 12)" opacity=".29"/><rect x="11" y="1" width="2" height="5" transform="rotate(60 12 12)" opacity=".43"/><rect x="11" y="1" width="2" height="5" transform="rotate(90 12 12)" opacity=".57"/><rect x="11" y="1" width="2" height="5" transform="rotate(120 12 12)" opacity=".71"/><rect x="11" y="1" width="2" height="5" transform="rotate(150 12 12)" opacity=".86"/><rect x="11" y="1" width="2" height="5" transform="rotate(180 12 12)"/></g></svg>
+                  <i class="fas fa-spinner fa-pulse"></i>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+    
+    document.querySelector("#results .v2024View").innerHTML += `
+  <div class="box has-background-primary-light" data-prod2024-id="${productListURL[index]}">
+    <div class="scanning"> ${productListURL[index]} 
+      <span class="icon is-large">
+        <span class="fa-lg">
+        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_OSmW{transform-origin:center;animation:spinner_T6mA .75s step-end infinite}@keyframes spinner_T6mA{8.3%{transform:rotate(30deg)}16.6%{transform:rotate(60deg)}25%{transform:rotate(90deg)}33.3%{transform:rotate(120deg)}41.6%{transform:rotate(150deg)}50%{transform:rotate(180deg)}58.3%{transform:rotate(210deg)}66.6%{transform:rotate(240deg)}75%{transform:rotate(270deg)}83.3%{transform:rotate(300deg)}91.6%{transform:rotate(330deg)}100%{transform:rotate(360deg)}}</style><g class="spinner_OSmW"><rect x="11" y="1" width="2" height="5" opacity=".14"/><rect x="11" y="1" width="2" height="5" transform="rotate(30 12 12)" opacity=".29"/><rect x="11" y="1" width="2" height="5" transform="rotate(60 12 12)" opacity=".43"/><rect x="11" y="1" width="2" height="5" transform="rotate(90 12 12)" opacity=".57"/><rect x="11" y="1" width="2" height="5" transform="rotate(120 12 12)" opacity=".71"/><rect x="11" y="1" width="2" height="5" transform="rotate(150 12 12)" opacity=".86"/><rect x="11" y="1" width="2" height="5" transform="rotate(180 12 12)"/></g></svg>
+          <i class="fas fa-spinner fa-pulse"></i>
+        </span>
+      </span>
+    </div>
+    <div class="columns is-align-items-center main00 is-hidden">
+      <div class="column is-half">
+        <div class="title is-size-3">${productListURL[index]}</div>
+      </div>
+      <div class="column is-quarter" id="rockwellLifeCycle2024"></div>
+      <div class="column is-quarter"><div class="is-flex gotoRockwell"><span>Go to Rockwell </span><a href="https://www.rockwellautomation.com/search/ra-en-US;keyword=${productListURL[index]};startIndex=0;activeTab=Products;spellingCorrect=true;facets=;languages=en;locales=en_GLOBAL,en-US;sort=bma;isPLS=false;sessionID=d9f1cfcd-b14c-" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z"/></svg></a>
+      </div>
+    </div>
+
+    </div>
+    <div class="columns main0 is-hidden">
+    <div class="column is-one-fifth">
+     <div class="card card-shadow">
+     <div class="card-header-title is-centered">Product Photo</div>
+       <div class="card-image">
+         <figure class="image is-4by3">
+         <a href="" target="_blank" class="rockwellProductPhotoLink">
+           <img
+             src=""
+             class="rockwellRepPhoto"
+           />
+           </a>
+         </figure>
+       </div>
+     </div>
+   </div> 
+    </div> 
+</div>
+ `;
+
     document.querySelector("#results .verbose-mode").innerHTML += `
     <div class="box" data-prod-id="${productListURL[index]}">
     <table class="table is-fullwidth table is-striped is-size-7">
@@ -373,6 +456,83 @@ searchBtn.addEventListener("click", () => {
           </table> 
     </div>
     </div>`;
+
+    browser.runtime
+    .sendMessage({
+      text: productListURL[index],
+      message: "ROCKWELL2024",
+    })
+    .then((response2024) => {
+      if (response2024.message === "ROCKWELL2024-SUCCESS") {
+        console.log(response2024.search);
+        document.querySelector(
+          `.v2024View [data-prod2024-id="${productListURL[index]}"] .title`
+        ).innerText = `${response2024.search.catalogNumber}`;
+
+        document
+        .querySelector(
+          `.v2024View [data-prod2024-id="${productListURL[index]}"] .scanning`
+        )
+        .classList.add("is-hidden");
+
+        const ROCKLIFECYCLE = [
+          { "ACTIVE": "is-primary" },
+          { "ACTIVEMATURE": "is-success" },
+          { "END OF LIFE": "is-warning" },
+          { "DISCONTINUED": "is-danger" },
+        ];
+        let endOfLifeObject = ROCKLIFECYCLE.find(
+          (item) => item[`${response2024.search.productLifeCycleStatus}`]
+        );
+        let colorLifCycle = endOfLifeObject
+          ? endOfLifeObject[`${response2024.search.productLifeCycleStatus}`]
+          : "is-warning";
+
+        document.querySelector(
+          `.v2024View [data-prod2024-id="${productListURL[index]}"] #rockwellLifeCycle2024`
+        ).innerHTML = `<span class="tag ${colorLifCycle} is-medium">${response2024.search.productLifeCycleStatus}</span>`;
+
+        let checkPhoto = response2024.search.image;
+        if (checkPhoto.includes(".jpg")) {
+          document.querySelector(`.prodView [data-product-photo="${productListURL[index]}"]`).innerHTML=`
+          <a href="${response2024.search.image}" target="_blank">
+          <img src="${response2024.search.image}" />
+          </a>`;
+          document
+            .querySelector(
+              `.v2024View [data-prod2024-id="${productListURL[index]}"] .rockwellRepPhoto`
+            )
+            .setAttribute("src", `${response2024.search.image}`);
+          document
+            .querySelector(
+              `.v2024View [data-prod2024-id="${productListURL[index]}"] .rockwellProductPhotoLink`
+            )
+            .setAttribute("href", `${response2024.search.image}`);
+          }
+
+
+
+
+        document
+        .querySelector(
+          `.v2024View [data-prod2024-id="${productListURL[index]}"] .scanning`
+        )
+        .classList.add("is-hidden");
+        document
+        .querySelector(
+          `.v2024View [data-prod2024-id="${productListURL[index]}"] .main00`
+        )
+        .classList.remove("is-hidden");
+        document
+        .querySelector(
+          `.v2024View [data-prod2024-id="${productListURL[index]}"] .main0`
+        )
+        .classList.remove("is-hidden");
+      }else if (response2024.message === "ROCKWELL2024-FAIL"){
+
+      }
+    })
+
 
     browser.runtime
       .sendMessage({
@@ -618,7 +778,7 @@ searchBtn.addEventListener("click", () => {
             ahrefTag.parentNode.insertBefore(imgTag, ahrefTag);
             ahrefTag.remove();
 
-            imgTag.setAttribute("src", `no-image.png`);
+            imgTag.setAttribute("src", `image_unavailable.svg`);
             let nearestCARDelement = imgTag.closest(".card");
             nearestCARDelement.classList.remove("card-shadow");
             nearestCARDelement.classList.add("card-transparent");
@@ -637,7 +797,7 @@ searchBtn.addEventListener("click", () => {
             ahrefTag.parentNode.insertBefore(imgTag, ahrefTag);
             ahrefTag.remove();
 
-            imgTag.setAttribute("src", `no-image.png`);
+            imgTag.setAttribute("src", `image_unavailable.svg`);
             let nearestCARDelement = imgTag.closest(".card");
             nearestCARDelement.classList.remove("card-shadow");
             nearestCARDelement.classList.add("card-transparent");

@@ -27,8 +27,8 @@
         <div class="container">
           <div class="is-light">
             <div class="columns">
-              <div class="column is-3">
-                <figure class="image">
+              <div class="column is-3 is-flex">
+                <figure class="image  is-align-content-center">
                   <img src="SPIDER_SEARCH_Rockwell.svg" />
                 </figure>
               </div>
@@ -70,8 +70,12 @@
                 <div class="panel-block">
                   <div class="control conbox2">
                     <div class="checkbox">
+                      <input type="checkbox" name="simplemode" id="simplemode" />
+                      <label for="simplemode">Simple Mode</label>
+                    </div>
+                    <div class="checkbox">
                       <input type="checkbox" name="myclip" id="myclip" />
-                      <label for="largepix">Show Clipboard</label>
+                      <label for="myclip">Show Clipboard</label>
                     </div>
                     <div class="checkbox">
                       <input
@@ -79,7 +83,7 @@
                         name="verbosemode"
                         id="verbosemode"
                       />
-                      <label for="largepix">Experimental Mode</label>
+                      <label for="verbosemode">Experimental Mode</label>
                     </div>
                   </div>
                 </div>
@@ -144,10 +148,11 @@
           <div class="card" id="resultCards">
             <div class="card-content">
               <div class="content" id="results">
-                <div class="verbose-mode is-hidden"></div>
                 <div class="productView is-hidden">
                   <div class="columns prodView is-multiline is-mobile"></div>
                 </div>
+                <div class="v2024View is-hidden"></div>
+                <div class="verbose-mode is-hidden"></div>
                 <div class="normalView"></div>
                 <div class="copyCSV is-hidden"></div>
               </div>

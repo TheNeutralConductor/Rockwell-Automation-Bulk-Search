@@ -50,4 +50,14 @@
   .copyCSV {
     display: none;
   }
+
+  #results .productView .is-one-quarter {
+    width: 33%;
+    break-after: avoid;
+    break-inside: avoid-page;
+  }
+  
+  #results .productView .is-one-quarter a{
+    font-size: 16px;
+  }
 }
