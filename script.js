@@ -9,6 +9,27 @@ const searchBtn = document.getElementById("search");
 const clearBtn = document.getElementById("reset");
 
 let masterJSONobject = [];
+let drawingARRAY = [
+  {
+    item_Number_input: "Item Number",
+    item_Number_ROCKWELL: "ROCKWELL ID",
+    drawing_Type: "CAD Drawing Type",
+    technical_Description: "ROCKWELL Technical Description",
+    download_URL: "Download URL",
+    file_name: "CAD File Name",
+  },
+];
+
+let documentsARRAY = [
+  {
+    item_Number_input: "Item Number",
+    item_Number_ROCKWELL: "ROCKWELL ID",
+    document_Type: "Document Type",
+    format: "FILE Format",
+    download_URL: "Download URL",
+    file_name: "FILE Name",
+  },
+];
 
 console.clear();
 console.log(
@@ -17,7 +38,6 @@ console.log(
 );
 
 document.getElementById("reset").style.visibility = "hidden";
-
 
 // Checkbox for SIMPLE Mode
 const simpleModeCheckBox = document.getElementById("simplemode");
@@ -34,7 +54,6 @@ simpleModeCheckBox.addEventListener("change", function () {
     }
   }
 });
-
 
 // Checkbox for VERBOSE Mode
 const verbosemodeCheckBox = document.getElementById("verbosemode");
@@ -89,6 +108,138 @@ document.getElementById("json-download").addEventListener("click", () => {
   link.click();
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
+});
+
+// CAD DOWNLOAD button...
+document.getElementById("cad-download").addEventListener("click", () => {
+  const csvRows = [];
+  const csvDATA = [];
+  const url = [];
+  drawingARRAY.forEach((item) => {
+    csvDATA.push(Object.values(item));
+  });
+
+  drawingARRAY.forEach((item) => {
+    if (item.download_URL != "Download URL") {
+      url.push(`${item.download_URL}`);
+    }
+    console.log(item.download_URL);
+  });
+
+  const finalURLS = [...new Set(url)];
+
+  let csvFILEcontent = "";
+
+  csvDATA.forEach((item) => {
+    csvFILEcontent += item.join("|") + "\n";
+  });
+
+  const blob = new Blob([csvFILEcontent], { type: "text/csv;" });
+  const csvURL = URL.createObjectURL(blob);
+  const ahref = document.createElement("a");
+  document.body.appendChild(ahref);
+  ahref.href = csvURL;
+  ahref.download = `ROCKWELL-CAD-DOWNLOAD-${Date()
+    .slice(0, 24)
+    .replaceAll(" ", "-")
+    .replaceAll(":", "-")}.csv`;
+  ahref.click();
+
+  const downloadFile = async (url) => {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const fileName = url.split("/").pop();
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  const downloadAllFiles = async (urls) => {
+    for (const url of urls) {
+      try {
+        await downloadFile(url);
+        console.log(`Downloaded: ${url}`);
+        await delay(1000); // 1-second delay
+      } catch (error) {
+        console.error(`Failed to download: ${url}`, error);
+      }
+    }
+  };
+
+  downloadAllFiles(finalURLS);
+});
+
+// DOCUMENT DOWNLOAD button...
+document.getElementById("documents-download").addEventListener("click", () => {
+  const csvRows = [];
+  const csvDATA = [];
+  const url = [];
+  documentsARRAY.forEach((item) => {
+    csvDATA.push(Object.values(item));
+  });
+
+  const filteredArray = documentsARRAY.filter((item) =>
+    item.format.includes("Adobe")
+  );
+
+  filteredArray.forEach((item) => {
+    if (item.download_URL != "Download URL") {
+      url.push(`${item.download_URL}`);
+    }
+    console.log(item.download_URL);
+  });
+
+  const finalURLS = [...new Set(url)];
+
+  let csvFILEcontent = "";
+
+  csvDATA.forEach((item) => {
+    csvFILEcontent += item.join("|") + "\n";
+  });
+
+  const blob = new Blob([csvFILEcontent], { type: "text/csv;" });
+  const csvURL = URL.createObjectURL(blob);
+  const ahref = document.createElement("a");
+  document.body.appendChild(ahref);
+  ahref.href = csvURL;
+  ahref.download = `DOCUMENTS-ROCKWELL-DOWNLOAD-${Date()
+    .slice(0, 24)
+    .replaceAll(" ", "-")
+    .replaceAll(":", "-")}.csv`;
+  ahref.click();
+
+  const downloadFile = async (url) => {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const fileName = url.split("/").pop();
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  const downloadAllFiles = async (urls) => {
+    for (const url of urls) {
+      try {
+        await downloadFile(url);
+        console.log(`Downloaded: ${url}`);
+        await delay(1000); // 1-second delay
+      } catch (error) {
+        console.error(`Failed to download: ${url}`, error);
+      }
+    }
+  };
+
+  downloadAllFiles(finalURLS);
 });
 
 const copyCSVText = document.querySelector(".copyCSV");
@@ -245,7 +396,6 @@ searchBtn.addEventListener("click", () => {
   document.getElementById("json-download").classList.toggle("is-hidden");
 
   for (let index = 0; index < productListURL.length; index++) {
-
     // PRODVIEW (SIMPLE VIEW)
     document.querySelector("#results .productView .prodView").innerHTML += `
     <div class="column is-one-quarter">
@@ -269,7 +419,7 @@ searchBtn.addEventListener("click", () => {
         </div>
       </div>
     </div>`;
-    
+
     document.querySelector("#results .v2024View").innerHTML += `
   <div class="box has-background-primary-light" data-prod2024-id="${productListURL[index]}">
     <div class="scanning"> ${productListURL[index]} 
@@ -458,81 +608,79 @@ searchBtn.addEventListener("click", () => {
     </div>`;
 
     browser.runtime
-    .sendMessage({
-      text: productListURL[index],
-      message: "ROCKWELL2024",
-    })
-    .then((response2024) => {
-      if (response2024.message === "ROCKWELL2024-SUCCESS") {
-        console.log(response2024.search);
-        document.querySelector(
-          `.v2024View [data-prod2024-id="${productListURL[index]}"] .title`
-        ).innerText = `${response2024.search.catalogNumber}`;
+      .sendMessage({
+        text: productListURL[index],
+        message: "ROCKWELL2024",
+      })
+      .then((response2024) => {
+        if (response2024.message === "ROCKWELL2024-SUCCESS") {
+          console.log(response2024.search);
+          document.querySelector(
+            `.v2024View [data-prod2024-id="${productListURL[index]}"] .title`
+          ).innerText = `${response2024.search.catalogNumber}`;
 
-        document
-        .querySelector(
-          `.v2024View [data-prod2024-id="${productListURL[index]}"] .scanning`
-        )
-        .classList.add("is-hidden");
+          document
+            .querySelector(
+              `.v2024View [data-prod2024-id="${productListURL[index]}"] .scanning`
+            )
+            .classList.add("is-hidden");
 
-        const ROCKLIFECYCLE = [
-          { "ACTIVE": "is-primary" },
-          { "ACTIVEMATURE": "is-success" },
-          { "END OF LIFE": "is-warning" },
-          { "DISCONTINUED": "is-danger" },
-        ];
-        let endOfLifeObject = ROCKLIFECYCLE.find(
-          (item) => item[`${response2024.search.productLifeCycleStatus}`]
-        );
-        let colorLifCycle = endOfLifeObject
-          ? endOfLifeObject[`${response2024.search.productLifeCycleStatus}`]
-          : "is-warning";
+          const ROCKLIFECYCLE = [
+            { ACTIVE: "is-primary" },
+            { ACTIVEMATURE: "is-success" },
+            { "END OF LIFE": "is-warning" },
+            { DISCONTINUED: "is-danger" },
+          ];
+          let endOfLifeObject = ROCKLIFECYCLE.find(
+            (item) => item[`${response2024.search.productLifeCycleStatus}`]
+          );
 
-        document.querySelector(
-          `.v2024View [data-prod2024-id="${productListURL[index]}"] #rockwellLifeCycle2024`
-        ).innerHTML = `<span class="tag ${colorLifCycle} is-medium">${response2024.search.productLifeCycleStatus}</span>`;
+          let colorLifCycle = endOfLifeObject
+            ? endOfLifeObject[`${response2024.search.productLifeCycleStatus}`]
+            : "is-warning";
 
-        let checkPhoto = response2024.search.image;
-        if (checkPhoto.includes(".jpg")) {
-          document.querySelector(`.prodView [data-product-photo="${productListURL[index]}"]`).innerHTML=`
+          document.querySelector(
+            `.v2024View [data-prod2024-id="${productListURL[index]}"] #rockwellLifeCycle2024`
+          ).innerHTML = `<span class="tag ${colorLifCycle} is-medium">${response2024.search.productLifeCycleStatus}</span>`;
+
+          let checkPhoto = response2024.search.image;
+          if (checkPhoto.includes(".jpg")) {
+            document.querySelector(
+              `.prodView [data-product-photo="${productListURL[index]}"]`
+            ).innerHTML = `
           <a href="${response2024.search.image}" target="_blank">
           <img src="${response2024.search.image}" />
           </a>`;
-          document
-            .querySelector(
-              `.v2024View [data-prod2024-id="${productListURL[index]}"] .rockwellRepPhoto`
-            )
-            .setAttribute("src", `${response2024.search.image}`);
-          document
-            .querySelector(
-              `.v2024View [data-prod2024-id="${productListURL[index]}"] .rockwellProductPhotoLink`
-            )
-            .setAttribute("href", `${response2024.search.image}`);
+            document
+              .querySelector(
+                `.v2024View [data-prod2024-id="${productListURL[index]}"] .rockwellRepPhoto`
+              )
+              .setAttribute("src", `${response2024.search.image}`);
+            document
+              .querySelector(
+                `.v2024View [data-prod2024-id="${productListURL[index]}"] .rockwellProductPhotoLink`
+              )
+              .setAttribute("href", `${response2024.search.image}`);
           }
 
-
-
-
-        document
-        .querySelector(
-          `.v2024View [data-prod2024-id="${productListURL[index]}"] .scanning`
-        )
-        .classList.add("is-hidden");
-        document
-        .querySelector(
-          `.v2024View [data-prod2024-id="${productListURL[index]}"] .main00`
-        )
-        .classList.remove("is-hidden");
-        document
-        .querySelector(
-          `.v2024View [data-prod2024-id="${productListURL[index]}"] .main0`
-        )
-        .classList.remove("is-hidden");
-      }else if (response2024.message === "ROCKWELL2024-FAIL"){
-
-      }
-    })
-
+          document
+            .querySelector(
+              `.v2024View [data-prod2024-id="${productListURL[index]}"] .scanning`
+            )
+            .classList.add("is-hidden");
+          document
+            .querySelector(
+              `.v2024View [data-prod2024-id="${productListURL[index]}"] .main00`
+            )
+            .classList.remove("is-hidden");
+          document
+            .querySelector(
+              `.v2024View [data-prod2024-id="${productListURL[index]}"] .main0`
+            )
+            .classList.remove("is-hidden");
+        } else if (response2024.message === "ROCKWELL2024-FAIL") {
+        }
+      });
 
     browser.runtime
       .sendMessage({
@@ -578,6 +726,37 @@ searchBtn.addEventListener("click", () => {
           let documents1Table = "";
           if (response1.search.rockwellDocuments.length > 0) {
             response1.search.rockwellDocuments.forEach((acc) => {
+              // documents
+              if (acc.type == "General") {
+                document
+                  .getElementById("documents-download")
+                  .classList.remove("is-hidden");
+                documentsARRAY.push({
+                  item_Number_input: `${productListURL[index]}`,
+                  item_Number_ROCKWELL: `${response1.search.rockwellCatNumber}`,
+                  document_Type: `${acc.name}`,
+                  format: `${acc.format}`,
+                  download_URL: `${acc.urlLink}`,
+                  file_name: `${acc.urlLink.split("/").pop()}`,
+                });
+              }
+              // CAD Drawings
+              if (acc.type == "Drawing") {
+                document
+                  .getElementById("cad-download")
+                  .classList.remove("is-hidden");
+                drawingARRAY.push({
+                  item_Number_input: `${productListURL[index]}`,
+                  item_Number_ROCKWELL: `${response1.search.rockwellCatNumber}`,
+                  drawing_Type: `${acc.title}`,
+                  technical_Description: `${response1.search.rockwellTechnicalDescription}`,
+                  download_URL: `${acc.urlLink}`,
+                  file_name: `${acc.urlLink.split("/").pop()}`,
+                });
+                // console.log(
+                //   `${productListURL[index]}|${response1.search.rockwellCatNumber}|${acc.title}|${response1.search.rockwellTechnicalDescription}|${acc.urlLink}`
+                // );
+              }
               documents1Table += `<tr>
               <th>${acc.type}</th>
               <td>${acc.docCategory}</td>
@@ -830,6 +1009,7 @@ searchBtn.addEventListener("click", () => {
           let endOfLifeObject = ROCKLIFECYCLE.find(
             (item) => item[`${response1.search.rockwellLifeCycle}`]
           );
+          console.log(endOfLifeObject, response1.search.rockwellLifeCycle);
           let colorLifCycle = endOfLifeObject
             ? endOfLifeObject[`${response1.search.rockwellLifeCycle}`]
             : "is-warning";
@@ -943,5 +1123,26 @@ function clearSelectionList() {
   document.querySelector("#results .copyCSV").innerHTML = "";
   document.getElementById("btn-print").classList.toggle("is-hidden");
   document.getElementById("json-download").classList.toggle("is-hidden");
+  document.getElementById("cad-download").classList.add("is-hidden");
   masterJSONobject = [];
+  drawingARRAY = [
+    {
+      item_Number_input: "Item Number",
+      item_Number_ROCKWELL: "ROCKWELL ID",
+      drawing_Type: "CAD Drawing Type",
+      technical_Description: "ROCKWELL Technical Description",
+      download_URL: "Download URL",
+      file_name: "CAD File Name",
+    },
+  ];
+  documentsARRAY = [
+    {
+      item_Number_input: "Item Number",
+      item_Number_ROCKWELL: "ROCKWELL ID",
+      document_Type: "Document Type",
+      format: "FILE Format",
+      download_URL: "Download URL",
+      file_name: "FILE Name",
+    },
+  ];
 }
