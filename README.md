@@ -10,6 +10,8 @@ Quickly find a product items:
 * CAD drawings
 * Accessories
 * Lifecycle status
+* Bulk download CAD drawings - CAD file types and ZIP/PDF (includes a list in a CSV file)
+* Bulk download PDF Documents (includes a list in a  CSV file)
 * ... more
 
 Easily PRINT a fully optimised interactive PDF.
@@ -41,3 +43,18 @@ For the geeks looking at the code, its powered by Manifest 2.
 11. The extension will now be loaded.
 
 Anytime you click the new tab "+" in firefox, this extension will appear.
+
+## CAD Downloads
+
+If CAD drawings exist the "CAD Download" button will appear.
+- Will export CAD file types as well as PDF drawings.
+- CSV file is genenerated that lists the Rockwell item numbers and its link to the CAD.
+- Downloads are 1 second apart (depending on the file size)
+
+## Document Downloads
+
+If "General" documents exist the "Document Download" button will appear.
+- Will export Document PDF file types only
+- CSV file is genenerated that lists the Rockwell item numbers and its link to the document.
+- Other things are listed in the CSV file (e.g. PODCAST urls, as well cutsheets)
+- Downloads are 1 second apart (depending on the file size)
