@@ -123,7 +123,7 @@ document.getElementById("cad-download").addEventListener("click", () => {
     if (item.download_URL != "Download URL") {
       url.push(`${item.download_URL}`);
     }
-    console.log(item.download_URL);
+    // console.log(item.download_URL);
   });
 
   const finalURLS = [...new Set(url)];
@@ -163,10 +163,10 @@ document.getElementById("cad-download").addEventListener("click", () => {
     for (const url of urls) {
       try {
         await downloadFile(url);
-        console.log(`Downloaded: ${url}`);
+        // console.log(`Downloaded: ${url}`);
         await delay(1000); // 1-second delay
       } catch (error) {
-        console.error(`Failed to download: ${url}`, error);
+        // console.error(`Failed to download: ${url}`, error);
       }
     }
   };
@@ -191,7 +191,7 @@ document.getElementById("documents-download").addEventListener("click", () => {
     if (item.download_URL != "Download URL") {
       url.push(`${item.download_URL}`);
     }
-    console.log(item.download_URL);
+    // console.log(item.download_URL);
   });
 
   const finalURLS = [...new Set(url)];
@@ -614,6 +614,7 @@ searchBtn.addEventListener("click", () => {
       })
       .then((response2024) => {
         if (response2024.message === "ROCKWELL2024-SUCCESS") {
+          console.log("response2024.search");
           console.log(response2024.search);
           document.querySelector(
             `.v2024View [data-prod2024-id="${productListURL[index]}"] .title`
@@ -704,6 +705,38 @@ searchBtn.addEventListener("click", () => {
           document.querySelector(
             `.normalView [data-id="${productListURL[index]}"] .title`
           ).innerText = `${response1.search.rockwellCatNumber}`;
+
+          if (
+            response1.search.rockwellInstallationGuideLink != "" &&
+            response1.search.rockwellInstallationGuideLink != "- - -"
+          ) {
+            documentsARRAY.push({
+              item_Number_input: `${productListURL[index]}`,
+              item_Number_ROCKWELL: `${response1.search.rockwellCatNumber}`,
+              document_Type: `Installation Guide PDF`,
+              format: `Adobe® PDF`,
+              download_URL: `${response1.search.rockwellInstallationGuideLink}`,
+              file_name: `${response1.search.rockwellInstallationGuideLink
+                .split("/")
+                .pop()}`,
+            });
+          }
+
+          if (
+            response1.search.rockwellSpecificationLink != "" &&
+            response1.search.rockwellSpecificationLink != "- - -"
+          ) {
+            documentsARRAY.push({
+              item_Number_input: `${productListURL[index]}`,
+              item_Number_ROCKWELL: `${response1.search.rockwellCatNumber}`,
+              document_Type: `Specification PDF`,
+              format: `Adobe® PDF`,
+              download_URL: `${response1.search.rockwellSpecificationLink}`,
+              file_name: `${response1.search.rockwellSpecificationLink
+                .split("/")
+                .pop()}`,
+            });
+          }
 
           let verbAccessoryTable = "";
           if (response1.search.rockwellAccessories.length > 0) {
