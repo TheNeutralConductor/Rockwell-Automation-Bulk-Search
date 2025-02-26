@@ -71,13 +71,14 @@ If "General" documents exist the "Document Download" button will appear.
 2. Select "To Table"
 <img src="/screenshots/Rockwell-JSON-to-EXCEL2.png" alt="Rockwell JSON to EXCEL" width="50%" height="50%">
 
-3. Select "To Table"
-<img src="/screenshots/Rockwell-JSON-to-EXCEL3.png" alt="Rockwell JSON to EXCEL" width="50%" height="50%">
-
+3. Click On the left/right arrows.
 <img src="/screenshots/Rockwell-JSON-to-EXCEL4.png" alt="Rockwell JSON to EXCEL" width="50%" height="50%">
 
+4. Deselect "Use original column name as prefix", then press OK.
 <img src="/screenshots/Rockwell-JSON-to-EXCEL5.png" alt="Rockwell JSON to EXCEL" width="25%" height="25%">
 
+5. Click on "Close & Load"
 <img src="/screenshots/Rockwell-JSON-to-EXCEL6.png" alt="Rockwell JSON to EXCEL" width="75%" height="575%">
 
+6. JSON to EXCEL transformation is complete.
 <img src="/screenshots/Rockwell-JSON-to-EXCEL7.png" alt="Rockwell JSON to EXCEL" width="75%" height="75%">
