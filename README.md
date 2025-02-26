@@ -58,3 +58,26 @@ If "General" documents exist the "Document Download" button will appear.
 - CSV file is genenerated that lists the Rockwell item numbers and its link to the document.
 - Other things are listed in the CSV file (e.g. PODCAST urls, as well cutsheets)
 - Downloads are 1 second apart (depending on the file size)
+
+## Using JSON file in EXCEL
+
+1. In a new book in MS Excel, select the DATA tab.
+   
+   Click "Get Data" and select "From File" and "From JSON".
+   
+   Select the JSON file you want to import.
+<img src="/screenshots/Rockwell-JSON-to-EXCEL1.png" alt="Rockwell JSON to EXCEL" width="50%" height="50%">
+
+2. Select "To Table"
+<img src="/screenshots/Rockwell-JSON-to-EXCEL2.png" alt="Rockwell JSON to EXCEL" width="50%" height="50%">
+
+3. Select "To Table"
+<img src="/screenshots/Rockwell-JSON-to-EXCEL3.png" alt="Rockwell JSON to EXCEL" width="50%" height="50%">
+
+<img src="/screenshots/Rockwell-JSON-to-EXCEL4.png" alt="Rockwell JSON to EXCEL" width="50%" height="50%">
+
+<img src="/screenshots/Rockwell-JSON-to-EXCEL5.png" alt="Rockwell JSON to EXCEL" width="25%" height="25%">
+
+<img src="/screenshots/Rockwell-JSON-to-EXCEL6.png" alt="Rockwell JSON to EXCEL" width="75%" height="575%">
+
+<img src="/screenshots/Rockwell-JSON-to-EXCEL7.png" alt="Rockwell JSON to EXCEL" width="75%" height="75%">
