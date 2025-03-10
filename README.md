@@ -1,22 +1,19 @@
 # Rockwell-Automation-Bulk-Search
 Bulk searching item numbers _item numbers_ of the [Rockwell Automation]([https://www.nhp.com.au](https://www.rockwellautomation.com/en-us.html)) website.
 
-Bulk search product item numbers.
+v2.0 (current version) update saw a lot of previous avilable functioning removed due to changes in the Rockwell API.
 
-Quickly find a product items:
-* Specifications
 * Photos
 * Technical Documents
 * CAD drawings
-* Accessories
 * Lifecycle status
-* Bulk download CAD drawings - CAD file types and ZIP/PDF (includes a list in a CSV file)
-* Bulk download PDF Documents (includes a list in a  CSV file)
-* ... more
 
-Easily PRINT a fully optimised interactive PDF.
+Easily:
+* Download a CSV file report
+* Bulk download all the assets.
+* PRINT a fully _interactive_ PDF.
 
-![my image](Rockwell-Bulk-Search-November-Item1.png)
+![Bulk search Rockwell Automation](screenshots/Rockwell-Bulk-Search-v2-1.png)
 
 
 ## Requirements
@@ -44,41 +41,35 @@ For the geeks looking at the code, its powered by Manifest 2.
 
 Anytime you click the new tab "+" in firefox, this extension will appear.
 
-## CAD Downloads
+## Download a CSV File
 
-If CAD drawings exist the "CAD Download" button will appear.
-- Will export CAD file types as well as PDF drawings.
-- CSV file is genenerated that lists the Rockwell item numbers and its link to the CAD.
+A CSV file report can be generated of the search results.
+
+Pressing the "CSV File Download" button downloads the CSV file to your Downloads folder (PC).
+- CSV file is "|" (pipe) seperated.
+
+In Excel use Data -> From Text/CSV then select import your CSV file.
+Select "Transform Data" then click on "Use First Row as Header", then click "Close & Load".
+![Bulk search Rockwell Automation](screenshots/Rockwell-Bulk-Search-v2-3.png)
+
+## Download All Assets
+
+If assets like photos, diagrams and documents exist the "Download All Assets" button will appear.
+- Will download assets into your Downloads folder (PC)
 - Downloads are 1 second apart (depending on the file size)
 
-## Document Downloads
+## PRINT an interactive PDF
 
-If "General" documents exist the "Document Download" button will appear.
-- Will export Document PDF file types only
-- CSV file is genenerated that lists the Rockwell item numbers and its link to the document.
-- Other things are listed in the CSV file (e.g. PODCAST urls, as well cutsheets)
-- Downloads are 1 second apart (depending on the file size)
+An interactive PDF file can be generated from the search results.
+Press the "PRINT" button and select 'Save to PDF' as the Destination.
+- all website interactivity is embedded in the PDF (links work)
 
-## Using JSON file in EXCEL
+![Bulk search Rockwell Automation](screenshots/Rockwell-Bulk-Search-v2-2.png)
 
-1. In a new book in MS Excel, select the DATA tab.
-   
-   Click "Get Data" and select "From File" and "From JSON".
-   
-   Select the JSON file you want to import.
-<img src="/screenshots/Rockwell-JSON-to-EXCEL1.png" alt="Rockwell JSON to EXCEL" width="50%" height="50%">
+## Watch out for ....
 
-2. Select "To Table"
-<img src="/screenshots/Rockwell-JSON-to-EXCEL2.png" alt="Rockwell JSON to EXCEL" width="50%" height="50%">
+_The Rockwell website search uses a 'score' to rate what it finds, and may not find what you actually searched for but something it believe you may have been looking for.
+Be wary that this can happen.
+We recommend you export the CSV file when doing mass searchs as the item number you search for, and the Rockwell item number are both included for comparison._
+![Bulk search Rockwell Automation](screenshots/Rockwell-Bulk-Search-v2-4.png)
 
-3. Click On the left/right arrows.
-<img src="/screenshots/Rockwell-JSON-to-EXCEL4.png" alt="Rockwell JSON to EXCEL" width="50%" height="50%">
-
-4. Deselect "Use original column name as prefix", then press OK.
-<img src="/screenshots/Rockwell-JSON-to-EXCEL5.png" alt="Rockwell JSON to EXCEL" width="25%" height="25%">
-
-5. Click on "Close & Load"
-<img src="/screenshots/Rockwell-JSON-to-EXCEL6.png" alt="Rockwell JSON to EXCEL" width="75%" height="575%">
-
-6. JSON to EXCEL transformation is complete.
-<img src="/screenshots/Rockwell-JSON-to-EXCEL7.png" alt="Rockwell JSON to EXCEL" width="75%" height="75%">
