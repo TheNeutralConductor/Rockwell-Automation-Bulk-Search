@@ -284,3 +284,18 @@ a svg path {
 .buttonsNav.is-flex {
   gap: 10px;
 }
+
+.noTable {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  margin-left: 10px;
+  fill: red;
+}
+
+.material-symbols-outlined.errror {
+  color: red;
+  background-color: yellow;
+  margin-right: 10px;
+  font-size: 37px;
+}
