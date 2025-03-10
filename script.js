@@ -151,7 +151,7 @@ searchBtn.addEventListener("click", () => {
   productListURL = [...new Set(productListURL)];
 
   document.getElementById("results").style.visibility = "visible";
-  document.getElementById("btn-print").classList.toggle("is-hidden");
+  document.getElementById("btn-print").classList.remove("is-hidden");
 
   for (let index = 0; index < productListURL.length; index++) {
     // 2025 VIEW
@@ -543,7 +543,7 @@ function clearSelectionList() {
   document.querySelector("#results .v2025View").innerHTML = "";
   document.getElementById("results").style.visibility = "hidden";
   document.getElementById("productItems").value = "";
-  document.getElementById("btn-print").classList.toggle("is-hidden");
+  document.getElementById("btn-print").classList.add("is-hidden");
   document.getElementById("csv-download").classList.add("is-hidden");
   document.getElementById("all-assets-download").classList.add("is-hidden");
   document.querySelector(".modal .modal-card-body").innerHTML = "";
