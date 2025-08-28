@@ -340,9 +340,9 @@ searchBtn.addEventListener("click", () => {
                 `.v2025View [data-prod2025-id="${productListURL[index]}"] .gotoProdpage a`
               ).href = `https://www.rockwellautomation.com/en-us/products/details.${rockwellDetails.rockwellProductNumber}.html`;
 
-              const description = webpage.querySelector(
-                "#ra-product-new__product-details div.ra-product-new__header-top h1"
-              ).textContent;
+              // const description = webpage.querySelector(
+              //   "#ra-product-new__product-details div.ra-product-new__header-top h1"
+              // ).textContent;
 
               // ------------------- PRODUCT PAGE PHOTOS
               const photoArray = webpage.querySelectorAll(
