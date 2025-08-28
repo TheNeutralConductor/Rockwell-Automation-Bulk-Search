@@ -1,7 +1,7 @@
 # Rockwell-Automation-Bulk-Search
 Bulk searching item numbers _item numbers_ of the [Rockwell Automation]([https://www.nhp.com.au](https://www.rockwellautomation.com/en-us.html)) website.
 
-v2.0 (current version) update saw a lot of previous avilable functioning removed due to changes in the Rockwell API.
+v2.1 (current version) update saw a lot of previous avilable functioning removed due to changes in the Rockwell API.
 
 * Photos
 * Technical Documents
